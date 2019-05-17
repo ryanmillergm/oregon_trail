@@ -7,7 +7,7 @@ require 'pry'
 class LinkedListTest < MiniTest::Test
 
   def setup
-    @list = LinkedList.new(head = nil)
+    @list = LinkedList.new
   end
 
   def test_linked_list_exists
@@ -20,22 +20,25 @@ class LinkedListTest < MiniTest::Test
 
   def test_list_appends
     expected = @list.append("West")
+
     assert_instance_of Node, expected
     assert_equal "West", expected.surname
-    binding.pry
+
   end
 
-  # def test_list_has_node
-  #   assert_instance_of LinkedList
-  # end
+  def test_head_next_node_nil
+    expected = @list.append("West")
+    assert_equal nil, @list.head.next_node
+  end
 
+  def test_list_count
+    expected = @list.append("West")
+    # binding.pry
+    assert_equal 1, @list.count
+  end
 end
 #
-# > require "./lib/linked_list"
-# > list = LinkedList.new
-# => <LinkedList @head=nil #45678904567>
-# > list.head
-# => nil
+
 # > list.append("West")
 # => <Node @surname="West" @next_node=nil #5678904567890>
 # > list
